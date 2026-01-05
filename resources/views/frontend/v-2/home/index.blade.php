@@ -69,8 +69,8 @@
                         View All
                     </a>
                 </div>
-                <div class="product-items-wrapper owl-carousel">
-                    @foreach ($hot_products as $product)
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                    @foreach ($hot_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
                             @if ($product->is_variable == true)
@@ -132,8 +132,8 @@
                     </a>
                 </div>
                 <!-- <new-arrival-products></new-arrival-products> -->
-                <div class="product-items-wrapper owl-carousel">
-                    @foreach ($new_products as $product)
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                    @foreach ($new_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
                             @if ($product->is_variable == true)
@@ -195,8 +195,8 @@
                     </a>
                 </div>
                 <!-- <feature-products></feature-products> -->
-                <div class="product-items-wrapper owl-carousel">
-                    @foreach ($regular_products as $product)
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                    @foreach ($regular_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
                             @if ($product->is_variable == true)
@@ -258,8 +258,8 @@
                     </a>
                 </div>
                 <!-- <discount-products></discount-products> -->
-                <div class="product-items-wrapper owl-carousel">
-                    @foreach ($discount_products as $product)
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                    @foreach ($discount_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
                             @if ($product->is_variable == true)
