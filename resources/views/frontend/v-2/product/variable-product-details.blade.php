@@ -191,8 +191,7 @@
                                         $videoId = $matches[1];
                                     } elseif (preg_match('/youtube\.com\/shorts\/([^\&\?\/]+)/', $url, $matches)) {
                                         $videoId = $matches[1];
-                                    } elseif (preg_match('/youtube\.com\/watch\?v=([^\&\?\/]+)/', $url, $matches)) {
-                                        $videoId = $matches[1];
+                                    }
                                     
                                     ?>
                                     @if($videoId)
