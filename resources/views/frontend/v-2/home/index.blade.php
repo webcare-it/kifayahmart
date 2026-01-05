@@ -247,7 +247,68 @@
     </section>
     <!-- /Popular Product -->
     @endif
-
+@if(count($discount_products) > 0)
+     <!-- Popular Product -->
+    <section class="product-section">
+        <div class="container">
+            <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+                <div class="section-title-outer">
+                    <h1 class="title">
+                        Discount Products
+                    </h1>
+                    <a href="{{ url('/discount/product') }}" class="product-view-all-btn">
+                        View All
+                    </a>
+                </div>
+                <!-- <discount-products></discount-products> -->
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+                    @foreach ($discount_products->take(18) as $product)
+                    <div class="product-item-wrapper">
+                        <div class="product-image-outer">
+                            @if ($product->is_variable == true)
+                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
+                            @else
+                            <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
+                            @endif
+                                <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
+                            </a>
+                            <div class="product-badges hot">
+                                <span style="text-transform: capitalize">{{$product->product_type}}</span>
+                            </div>
+                        </div>
+                        <div class="product-content-outer">
+                            @if ($product->is_variable == true)
+                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
+                            @else
+                            <a href="{{url('product/'.$product->slug)}}" class="product-name">
+                            @endif
+                                {{mb_strlen($product->name, 'UTF-8') > 50 ? mb_substr($product->name, 0, 50, 'UTF-8') . '....' : $product->name}}
+                            </a>
+                            <div class="product-item-bottom">
+                                <div class="product-price">
+                                    @if ($product->discount_price != null)
+                                    <span>{{$product->discount_price}} Tk.</span>
+                                    @else
+                                    <span>{{$product->regular_price}} Tk.</span>
+                                    @endif
+                                </div>
+                                <div class="add-cart">
+                                    <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Add
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Popular Product -->
+    @endif
     @if(count($regular_products) > 0)
     <!-- Popular Product -->
     <section class="product-section">
@@ -311,68 +372,7 @@
     <!-- /Popular Product -->
     @endif
 
-    @if(count($discount_products) > 0)
-     <!-- Popular Product -->
-    <section class="product-section">
-        <div class="container">
-            <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
-                <div class="section-title-outer">
-                    <h1 class="title">
-                        Discount Products
-                    </h1>
-                    <a href="{{ url('/discount/product') }}" class="product-view-all-btn">
-                        View All
-                    </a>
-                </div>
-                <!-- <discount-products></discount-products> -->
-                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-                    @foreach ($discount_products->take(18) as $product)
-                    <div class="product-item-wrapper">
-                        <div class="product-image-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
-                            @endif
-                                <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
-                            </a>
-                            <div class="product-badges hot">
-                                <span style="text-transform: capitalize">{{$product->product_type}}</span>
-                            </div>
-                        </div>
-                        <div class="product-content-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-name">
-                            @endif
-                                {{mb_strlen($product->name, 'UTF-8') > 50 ? mb_substr($product->name, 0, 50, 'UTF-8') . '....' : $product->name}}
-                            </a>
-                            <div class="product-item-bottom">
-                                <div class="product-price">
-                                    @if ($product->discount_price != null)
-                                    <span>{{$product->discount_price}} Tk.</span>
-                                    @else
-                                    <span>{{$product->regular_price}} Tk.</span>
-                                    @endif
-                                </div>
-                                <div class="add-cart">
-                                    <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add
-                                    </a>
-                                </div>
-                            </div>
-                            <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- /Popular Product -->
-    @endif
+
 
     <!-- Bottom Banner -->
     <section class="pt-5 pb-5">
