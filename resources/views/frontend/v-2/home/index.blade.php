@@ -167,13 +167,13 @@
                                         @endif
                                     </div>
                                     <div class="add-cart">
-                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart)}}" class="add-cart-btn">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
                                             <i class="fas fa-shopping-cart"></i>
                                             Add
                                         </a>
                                     </div>
                                 </div>
-                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order)}}" class="quick-order-btn-inner">Quick Order</a>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
                             </div>
                         </div>
                     </div>
@@ -232,13 +232,13 @@
                                         @endif
                                     </div>
                                     <div class="add-cart">
-                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart)}}" class="add-cart-btn">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
                                             <i class="fas fa-shopping-cart"></i>
                                             Add
                                         </a>
                                     </div>
                                 </div>
-                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order)}}" class="quick-order-btn-inner">Quick Order</a>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
                             </div>
                         </div>
                     </div>
@@ -297,13 +297,13 @@
                                         @endif
                                     </div>
                                     <div class="add-cart">
-                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart)}}" class="add-cart-btn">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
                                             <i class="fas fa-shopping-cart"></i>
                                             Add
                                         </a>
                                     </div>
                                 </div>
-                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order)}}" class="quick-order-btn-inner">Quick Order</a>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
                             </div>
                         </div>
                     </div>
