@@ -7,43 +7,7 @@
 @section('content-v2')
     <section class="home-slider-section container">
         <div class="row">
-             <div class="col-md-3">
-                <div class="top-selling-product-wrapper">
-                    <h5 class="top-selling-product-title">
-                        Top Selling Products
-                    </h5>
-                    <div class="top-selling-product-items-wrap">
-                        @foreach ($top_products as $product)
-                        <div class="top-selling-item-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->product->slug)}}" class="top-selling-product-image">
-                            @else
-                            <a href="{{url('product/'.$product->product->slug)}}" class="top-selling-product-image">
-                            @endif
-                                <img src="{{asset('product/images/'.$product->product->image)}}" alt="Image" />
-                            </a>
-                            <div class="top-selling-product-content">
-                                @if ($product->is_variable == true)
-                                <a href="{{url('variable-product/'.$product->product->slug)}}" class="product-name">
-                                @else
-                                <a href="{{url('product/'.$product->product->slug)}}" class="product-name">
-                                @endif
-                                    {{$product->product->name}}
-                                </a>
-                                <h6 class="product-regular-price">
-                                    @if ($product->product->discount_price != null)
-                                    ৳{{$product->product->discount_price}}
-                                    @else
-                                    ৳{{$product->product->regular_price}}
-                                    @endif
-                                </h6>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="slider-items-wrapper">
                     @foreach($sliders as $slider)
                     <div class="slider-item-outer">
@@ -51,14 +15,6 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- /Home Slider -->
-    <section class="notice-section">
-        <div class="container">
-            <div class="notice_text_wrap">
-                <marquee direction="left">অর্ডার করার পূর্বে কাস্টমার কেয়ার থেকে পন্যের স্টক ও ডেলিভারি সম্পর্কে জেনে নেয়ার অনুরোধ করা যাচ্ছে। প্রযুক্তি পণ্যের মূল্য অস্থিতিশীল থাকার কারণে যেকোনো মুহূর্তে পণ্যের দাম পরিবর্তন হতে পারে।</marquee>
             </div>
         </div>
     </section>
@@ -115,43 +71,45 @@
                 </div>
                 <div class="product-items-wrapper owl-carousel">
                     @foreach ($hot_products as $product)
-                    <div class="product-item-wrapper">
-                        <div class="product-image-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
-                            @endif
-                                <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
-                            </a>
-                            <div class="product-badges hot">
-                                <span style="text-transform: capitalize">{{$product->product_type}}</span>
-                            </div>
-                        </div>
-                        <div class="product-content-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-name">
-                            @endif
-                                {{mb_strlen($product->name, 'UTF-8') > 50 ? mb_substr($product->name, 0, 50, 'UTF-8') . '....' : $product->name}}
-                            </a>
-                            <div class="product-item-bottom">
-                                <div class="product-price">
-                                    @if ($product->discount_price != null)
-                                    <span>{{$product->discount_price}} Tk.</span>
-                                    @else
-                                    <span>{{$product->regular_price}} Tk.</span>
-                                    @endif
-                                </div>
-                                <div class="add-cart">
-                                    <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add
-                                    </a>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="product-item-wrapper">
+                            <div class="product-image-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
+                                @endif
+                                    <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
+                                </a>
+                                <div class="product-badges hot">
+                                    <span style="text-transform: capitalize">{{$product->product_type}}</span>
                                 </div>
                             </div>
-                            <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
+                            <div class="product-content-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-name">
+                                @endif
+                                    {{mb_strlen($product->name, 'UTF-8') > 30 ? mb_substr($product->name, 0, 30, 'UTF-8') . '...' : $product->name}}
+                                </a>
+                                <div class="product-item-bottom">
+                                    <div class="product-price">
+                                        @if ($product->discount_price != null)
+                                        <span>{{$product->discount_price}} Tk.</span>
+                                        @else
+                                        <span>{{$product->regular_price}} Tk.</span>
+                                        @endif
+                                    </div>
+                                    <div class="add-cart">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add
+                                        </a>
+                                    </div>
+                                </div>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -178,43 +136,45 @@
                 <!-- <new-arrival-products></new-arrival-products> -->
                 <div class="product-items-wrapper owl-carousel">
                     @foreach ($new_products as $product)
-                    <div class="product-item-wrapper">
-                        <div class="product-image-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
-                            @endif
-                                <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
-                            </a>
-                            <div class="product-badges hot">
-                                <span style="text-transform: capitalize">{{$product->product_type}}</span>
-                            </div>
-                        </div>
-                        <div class="product-content-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-name">
-                            @endif
-                                {{mb_strlen($product->name, 'UTF-8') > 50 ? mb_substr($product->name, 0, 50, 'UTF-8') . '....' : $product->name}}
-                            </a>
-                            <div class="product-item-bottom">
-                                <div class="product-price">
-                                    @if ($product->discount_price != null)
-                                    <span>{{$product->discount_price}} Tk.</span>
-                                    @else
-                                    <span>{{$product->regular_price}} Tk.</span>
-                                    @endif
-                                </div>
-                                <div class="add-cart">
-                                    <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add
-                                    </a>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="product-item-wrapper">
+                            <div class="product-image-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
+                                @endif
+                                    <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
+                                </a>
+                                <div class="product-badges hot">
+                                    <span style="text-transform: capitalize">{{$product->product_type}}</span>
                                 </div>
                             </div>
-                            <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
+                            <div class="product-content-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-name">
+                                @endif
+                                    {{mb_strlen($product->name, 'UTF-8') > 30 ? mb_substr($product->name, 0, 30, 'UTF-8') . '...' : $product->name}}
+                                </a>
+                                <div class="product-item-bottom">
+                                    <div class="product-price">
+                                        @if ($product->discount_price != null)
+                                        <span>{{$product->discount_price}} Tk.</span>
+                                        @else
+                                        <span>{{$product->regular_price}} Tk.</span>
+                                        @endif
+                                    </div>
+                                    <div class="add-cart">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart)}}" class="add-cart-btn">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add
+                                        </a>
+                                    </div>
+                                </div>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order)}}" class="quick-order-btn-inner">Quick Order</a>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -241,43 +201,45 @@
                 <!-- <feature-products></feature-products> -->
                 <div class="product-items-wrapper owl-carousel">
                     @foreach ($regular_products as $product)
-                    <div class="product-item-wrapper">
-                        <div class="product-image-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
-                            @endif
-                                <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
-                            </a>
-                            <div class="product-badges hot">
-                                <span style="text-transform: capitalize">{{$product->product_type}}</span>
-                            </div>
-                        </div>
-                        <div class="product-content-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-name">
-                            @endif
-                                {{mb_strlen($product->name, 'UTF-8') > 50 ? mb_substr($product->name, 0, 50, 'UTF-8') . '....' : $product->name}}
-                            </a>
-                            <div class="product-item-bottom">
-                                <div class="product-price">
-                                    @if ($product->discount_price != null)
-                                    <span>{{$product->discount_price}} Tk.</span>
-                                    @else
-                                    <span>{{$product->regular_price}} Tk.</span>
-                                    @endif
-                                </div>
-                                <div class="add-cart">
-                                    <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add
-                                    </a>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="product-item-wrapper">
+                            <div class="product-image-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
+                                @endif
+                                    <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
+                                </a>
+                                <div class="product-badges hot">
+                                    <span style="text-transform: capitalize">{{$product->product_type}}</span>
                                 </div>
                             </div>
-                            <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
+                            <div class="product-content-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-name">
+                                @endif
+                                    {{mb_strlen($product->name, 'UTF-8') > 30 ? mb_substr($product->name, 0, 30, 'UTF-8') . '...' : $product->name}}
+                                </a>
+                                <div class="product-item-bottom">
+                                    <div class="product-price">
+                                        @if ($product->discount_price != null)
+                                        <span>{{$product->discount_price}} Tk.</span>
+                                        @else
+                                        <span>{{$product->regular_price}} Tk.</span>
+                                        @endif
+                                    </div>
+                                    <div class="add-cart">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart)}}" class="add-cart-btn">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add
+                                        </a>
+                                    </div>
+                                </div>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order)}}" class="quick-order-btn-inner">Quick Order</a>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -304,43 +266,45 @@
                 <!-- <discount-products></discount-products> -->
                 <div class="product-items-wrapper owl-carousel">
                     @foreach ($discount_products as $product)
-                    <div class="product-item-wrapper">
-                        <div class="product-image-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
-                            @endif
-                                <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
-                            </a>
-                            <div class="product-badges hot">
-                                <span style="text-transform: capitalize">{{$product->product_type}}</span>
-                            </div>
-                        </div>
-                        <div class="product-content-outer">
-                            @if ($product->is_variable == true)
-                            <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
-                            @else
-                            <a href="{{url('product/'.$product->slug)}}" class="product-name">
-                            @endif
-                                {{mb_strlen($product->name, 'UTF-8') > 50 ? mb_substr($product->name, 0, 50, 'UTF-8') . '....' : $product->name}}
-                            </a>
-                            <div class="product-item-bottom">
-                                <div class="product-price">
-                                    @if ($product->discount_price != null)
-                                    <span>{{$product->discount_price}} Tk.</span>
-                                    @else
-                                    <span>{{$product->regular_price}} Tk.</span>
-                                    @endif
-                                </div>
-                                <div class="add-cart">
-                                    <a href="{{url('/add/to/cart/'.$product->id.'/add_cart')}}" class="add-cart-btn">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add
-                                    </a>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="product-item-wrapper">
+                            <div class="product-image-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-imgae">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-imgae">
+                                @endif
+                                    <img src="{{asset('product/images/'.$product->image)}}" class="main-image" alt="product image">
+                                </a>
+                                <div class="product-badges hot">
+                                    <span style="text-transform: capitalize">{{$product->product_type}}</span>
                                 </div>
                             </div>
-                            <a href="{{url('/add/to/cart/'.$product->id.'/quick_order')}}" class="quick-order-btn-inner">Quick Order</a>
+                            <div class="product-content-outer">
+                                @if ($product->is_variable == true)
+                                <a href="{{url('variable-product/'.$product->slug)}}" class="product-name">
+                                @else
+                                <a href="{{url('product/'.$product->slug)}}" class="product-name">
+                                @endif
+                                    {{mb_strlen($product->name, 'UTF-8') > 30 ? mb_substr($product->name, 0, 30, 'UTF-8') . '...' : $product->name}}
+                                </a>
+                                <div class="product-item-bottom">
+                                    <div class="product-price">
+                                        @if ($product->discount_price != null)
+                                        <span>{{$product->discount_price}} Tk.</span>
+                                        @else
+                                        <span>{{$product->regular_price}} Tk.</span>
+                                        @endif
+                                    </div>
+                                    <div class="add-cart">
+                                        <a href="{{url('/add/to/cart/'.$product->id.'/add_cart)}}" class="add-cart-btn">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add
+                                        </a>
+                                    </div>
+                                </div>
+                                <a href="{{url('/add/to/cart/'.$product->id.'/quick_order)}}" class="quick-order-btn-inner">Quick Order</a>
+                            </div>
                         </div>
                     </div>
                     @endforeach
