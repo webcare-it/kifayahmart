@@ -5,6 +5,73 @@
 @endsection
 
 @section('content-v2')
+<style>
+    /* Responsive Typography */
+    .title {
+        font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+    }
+
+    .product-name {
+        font-size: clamp(0.85rem, 2.5vw, 1.1rem) !important;
+    }
+
+    .product-price span {
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem) !important;
+    }
+
+    .section-title-outer {
+        font-size: clamp(1rem, 4vw, 1.8rem) !important;
+    }
+
+    .categoris-name {
+        font-size: clamp(0.8rem, 2vw, 1rem) !important;
+    }
+
+    .items-number {
+        font-size: clamp(0.7rem, 1.5vw, 0.9rem) !important;
+    }
+
+    .add-cart-btn, .quick-order-btn-inner {
+        font-size: clamp(0.75rem, 2vw, 0.95rem) !important;
+    }
+
+    .product-item-wrapper {
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .footer-top-item-wrap .title {
+        font-size: clamp(0.9rem, 3vw, 1.3rem) !important;
+    }
+
+    .footer-top-item-wrap .description {
+        font-size: clamp(0.75rem, 2vw, 0.95rem) !important;
+    }
+
+    /* Responsive grid for products */
+    @media (max-width: 480px) {
+        .row[style*="grid"] {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+        .row[style*="grid"] {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .row[style*="grid"] {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .row[style*="grid"] {
+            grid-template-columns: repeat(6, 1fr) !important;
+        }
+    }
+</style>
     <section class="home-slider-section container">
         <div class="row">
             <div class="col-md-12">
