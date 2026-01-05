@@ -69,7 +69,7 @@
                         View All
                     </a>
                 </div>
-                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                     @foreach ($hot_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
@@ -132,7 +132,7 @@
                     </a>
                 </div>
                 <!-- <new-arrival-products></new-arrival-products> -->
-                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                     @foreach ($new_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
@@ -195,7 +195,7 @@
                     </a>
                 </div>
                 <!-- <feature-products></feature-products> -->
-                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                     @foreach ($regular_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
@@ -258,7 +258,7 @@
                     </a>
                 </div>
                 <!-- <discount-products></discount-products> -->
-                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                <div class="row" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                     @foreach ($discount_products->take(18) as $product)
                     <div class="product-item-wrapper">
                         <div class="product-image-outer">
